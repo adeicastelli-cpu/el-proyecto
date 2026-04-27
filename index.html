@@ -1,125 +1,197 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Mi página cool</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo Dulce</title>
 
-  <!-- Fuente -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
+}
 
-    body {
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: white;
-      overflow-x: hidden;
-    }
+body{
+  background:#fff7f5;
+}
 
-    header {
-      padding: 20px;
-      text-align: center;
-      font-size: 24px;
-      font-weight: 600;
-      background: rgba(0,0,0,0.3);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-    }
+/* NAVBAR */
+header{
+  background:#ff7a7a;
+  padding:20px;
+  text-align:center;
+  color:white;
+  font-size:24px;
+  font-weight:bold;
+}
 
-    .hero {
-      height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-    }
+/* HERO */
+.hero{
+  text-align:center;
+  padding:40px;
+}
 
-    .hero h1 {
-      font-size: 60px;
-      margin-bottom: 20px;
-      animation: fadeIn 2s ease-in-out;
-    }
+.hero h1{
+  font-size:40px;
+}
 
-    .hero p {
-      font-size: 20px;
-      opacity: 0.8;
-    }
+.hero p{
+  opacity:0.7;
+}
 
-    .btn {
-      margin-top: 30px;
-      padding: 15px 30px;
-      background: #38bdf8;
-      border: none;
-      border-radius: 30px;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+/* BOTONES FILTRO */
+.filtros{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:20px;
+}
 
-    .btn:hover {
-      transform: scale(1.1);
-      background: #0ea5e9;
-    }
+.filtros button{
+  padding:10px 20px;
+  border:none;
+  background:#ffd1d1;
+  cursor:pointer;
+  border-radius:20px;
+}
 
-    .cards {
-      display: flex;
-      gap: 20px;
-      padding: 50px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+.filtros button:hover{
+  background:#ffaaaa;
+}
 
-    .card {
-      background: rgba(255,255,255,0.05);
-      padding: 30px;
-      border-radius: 20px;
-      width: 250px;
-      transition: 0.3s;
-    }
+/* CARDS */
+.container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:20px;
+  padding:20px;
+}
 
-    .card:hover {
-      transform: translateY(-10px);
-      background: rgba(255,255,255,0.1);
-    }
+.card{
+  width:250px;
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-  </style>
+.card:hover{
+  transform:translateY(-10px);
+}
+
+.card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+}
+
+.card-content{
+  padding:15px;
+}
+
+.card h3{
+  margin-bottom:10px;
+}
+
+.precio{
+  font-weight:bold;
+  color:#ff7a7a;
+}
+
+.btn{
+  margin-top:10px;
+  padding:10px;
+  width:100%;
+  border:none;
+  background:#25D366;
+  color:white;
+  cursor:pointer;
+  border-radius:10px;
+}
+
+.btn:hover{
+  background:#1ebe5d;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  Mi Web 🚀
+🍰 Dulce Tentación
 </header>
 
 <section class="hero">
-  <h1>Hola, soy Ana</h1>
-  <p>Esta es mi página épica hecha en VS Code</p>
-  <button class="btn" onclick="saludo()">Click acá</button>
+<h1>Catálogo de Postres</h1>
+<p>Elegí tu favorito y pedí por WhatsApp</p>
 </section>
 
-<section class="cards">
-  <div class="card">🔥 Diseño moderno</div>
-  <div class="card">⚡ Rápido</div>
-  <div class="card">🌍 Subido a GitHub</div>
+<div class="filtros">
+<button onclick="filtrar('todos')">Todos</button>
+<button onclick="filtrar('torta')">Tortas</button>
+<button onclick="filtrar('galleta')">Galletas</button>
+</div>
+
+<section class="container" id="catalogo">
+
+<div class="card torta">
+<img src="https://source.unsplash.com/300x200/?cake">
+<div class="card-content">
+<h3>Torta Chocolate</h3>
+<p class="precio">$8500</p>
+<button class="btn" onclick="comprar('Torta Chocolate')">Pedir</button>
+</div>
+</div>
+
+<div class="card galleta">
+<img src="https://source.unsplash.com/300x200/?cookies">
+<div class="card-content">
+<h3>Cookies</h3>
+<p class="precio">$3500</p>
+<button class="btn" onclick="comprar('Cookies')">Pedir</button>
+</div>
+</div>
+
+<div class="card torta">
+<img src="https://source.unsplash.com/300x200/?strawberry-cake">
+<div class="card-content">
+<h3>Torta Frutilla</h3>
+<p class="precio">$9000</p>
+<button class="btn" onclick="comprar('Torta Frutilla')">Pedir</button>
+</div>
+</div>
+
 </section>
 
 <script>
-  function saludo() {
-    alert("Bienvenido a mi página 😎");
-  }
+function comprar(producto){
+  let numero = "5491123456789"; // CAMBIÁ ESTE NÚMERO
+  let mensaje = "Hola, quiero pedir: " + producto;
+  let url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensaje);
+  window.open(url, "_blank");
+}
+
+function filtrar(categoria){
+  let cards = document.querySelectorAll(".card");
+
+  cards.forEach(card=>{
+    if(categoria === "todos"){
+      card.style.display = "block";
+    } else {
+      if(card.classList.contains(categoria)){
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    }
+  });
+}
 </script>
 
 </body>
